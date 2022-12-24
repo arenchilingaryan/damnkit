@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, 'src/index.ts'),
+    app: path.resolve(__dirname, 'packages/index.ts'),
     hot: 'webpack/hot/dev-server.js',
     client: 'webpack-dev-server/client/index.js?hot=true&live-reload=true',
   },
@@ -17,9 +17,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
-    alias: {
-      utils: path.resolve(__dirname, 'src/utils/'),
-      shared: path.resolve(__dirname, 'src/components/shared/'),
-    },
   },
 };

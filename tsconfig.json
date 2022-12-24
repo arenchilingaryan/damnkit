@@ -12,10 +12,6 @@
     "incremental": true,
     "lib": ["dom", "esnext"],
     "esModuleInterop": true,
-    "paths": {
-      "utils/*": ["src/utils/*"],
-      "shared/*": ["src/components/shared/*"]
-    },
     "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react"
