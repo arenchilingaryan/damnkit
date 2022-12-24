@@ -1,0 +1,23 @@
+{
+  "types": ["node", "react-emotion"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "incremental": true,
+    "lib": ["dom", "esnext"],
+    "esModuleInterop": true,
+    "paths": {
+      "utils/*": ["src/utils/*"],
+      "shared/*": ["src/components/shared/*"]
+    },
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react"
+  }
+}
