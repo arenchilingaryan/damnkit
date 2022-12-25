@@ -1,5 +1,5 @@
 {
-  "types": ["node", "react-emotion"],
+  "types": ["node"],
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
@@ -13,7 +13,6 @@
     "lib": ["dom", "esnext"],
     "esModuleInterop": true,
     "baseUrl": ".",
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react"
+    "jsx": "react-jsx"
   }
 }

@@ -1,36 +1,23 @@
 import React from 'react';
-import { css } from '@emotion/react';
+import styled from 'styled-components';
 
-interface ButtonProps {
-  primary?: boolean;
-  backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
-  label: string;
-  onClick?: () => void;
-}
-const style = css`
-  color: red;
+const ButtonTest = styled.button`
+  /* Adapt the colors based on primary prop */
+  background: ${(props) => props.theme.primary};
+  color: ${(props) => (props.theme ? 'white' : 'palevioletred')};
+
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `;
 
-const SomeComponent = ({ children }: React.PropsWithChildren) => (
-  <div css={style}>
-    Some hotpink text.
-    {children}
-  </div>
-);
-
-export const Button = ({ primary = false, size = 'medium', backgroundColor, label, ...props }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = () => {
   return (
-    <SomeComponent>
-      <button
-        type="button"
-        className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-        style={{ backgroundColor }}
-        {...props}
-      >
-        {label}
-      </button>
-    </SomeComponent>
+    <div>
+      <ButtonTest>Normal</ButtonTest>
+      <ButtonTest>Primary</ButtonTest>
+    </div>
   );
 };
