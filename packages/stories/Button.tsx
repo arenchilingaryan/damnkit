@@ -13,7 +13,7 @@ const ButtonTest = styled.button`
   border-radius: 3px;
 `;
 
-export const Button = () => {
+export const Button: React.FC = () => {
   return (
     <div>
       <ButtonTest>Normal</ButtonTest>
