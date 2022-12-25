@@ -1,5 +1,4 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -7,7 +6,7 @@ module.exports = {
     hot: 'webpack/hot/dev-server.js',
     client: 'webpack-dev-server/client/index.js?hot=true&live-reload=true',
   },
-  plugins: [new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public/index.html') })],
+  plugins: [],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash:8].js',
