@@ -1,7 +1,6 @@
 import React from 'react';
-import { DamnProvider } from '../packages/config/DamnProvider/damn-provider';
 
 const withThemeProvider = (Story) => {
-  return <DamnProvider>{Story()}</DamnProvider>;
+  return Story();
 };
 export const decorators = [withThemeProvider];

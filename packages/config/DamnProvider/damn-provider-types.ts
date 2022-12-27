@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { Config } from '../types';
 
 type DamnProviderPropsType = {
-  theme?: Config;
+  config?: Config;
 };
 
 export type DamnProviderType = PropsWithChildren<DamnProviderPropsType>;

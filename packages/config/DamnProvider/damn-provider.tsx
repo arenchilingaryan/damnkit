@@ -1,11 +1,11 @@
 import React from 'react';
 import { DamnProviderType } from './damn-provider-types';
-import { ThemeProvider } from 'styled-components';
-import defaultTheme from '../base-theme';
-import { mergeTheme } from '../mergeTheme';
+import { mergeConfig } from '../merge-config';
+import defaultConfig from '../base-config';
+import { ConfigContext } from '../context/config-context';
 
-export function DamnProvider({ theme, children }: DamnProviderType) {
-  const customTheme = theme ? mergeTheme(theme) : defaultTheme;
-  console.log('defaultTheme', defaultTheme);
-  return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
+export function DamnProvider({ config: settings, children }: DamnProviderType) {
+  return (
+    <ConfigContext.Provider value={settings ? mergeConfig(settings) : defaultConfig}>{children}</ConfigContext.Provider>
+  );
 }
