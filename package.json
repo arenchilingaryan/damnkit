@@ -1,5 +1,8 @@
 {
-  "name": "damnkit",
+  "name": "arenchilingaryan/damnkit",
+  "publishConfig": {
+    "arenchilingaryan:registry": "https://npm.pkg.github.com"
+  },
   "version": "1.0.0",
   "main": "webpack.common.js",
   "license": "MIT",
