@@ -1,5 +1,5 @@
 {
-  "name": "arenchilingaryan/damnkit",
+  "name": "damnkit",
   "publishConfig": {
     "arenchilingaryan:registry": "https://npm.pkg.github.com"
   },
