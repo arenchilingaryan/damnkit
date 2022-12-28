@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  stories: ['../packages/**/*.stories.mdx', '../packages/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../packages/**/*.stories.@(js|jsx|ts|tsx|mdx)'.replace(/\\/g, '/')],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-a11y'],
   framework: '@storybook/react',
   core: {
@@ -16,7 +16,7 @@ module.exports = {
     ];
 
     config.resolve.mainFields = ['browser', 'module', 'main'];
-    config.resolve.extensions.push('.ts', '.tsx', 'js', 'jsx');
+    config.resolve.extensions.push('.ts', '.tsx', 'js', 'jsx', 'mdx');
 
     config.resolve.modules.push(path.resolve(__dirname, '../packages'));
 
