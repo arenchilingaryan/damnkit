@@ -4,8 +4,8 @@
   "publishConfig": {
     "arenchilingaryan:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.1",
-  "main": "webpack.common.js",
+  "version": "1.0.2",
+  "main": "./packages/index.ts",
   "license": "MIT",
   "scripts": {
     "dev": "start-storybook -p 6006",
