@@ -4,14 +4,15 @@
   "publishConfig": {
     "arenchilingaryan:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./packages/index.ts",
   "license": "MIT",
   "scripts": {
     "dev": "start-storybook -p 6006",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "lint": "eslint --fix .",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "publish": "npm publish"
   },
   "devDependencies": {
     "@babel/core": "7.20.7",

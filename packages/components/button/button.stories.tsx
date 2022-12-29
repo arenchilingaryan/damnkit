@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button as CoreButton } from './button';
+import CoreButton from './button';
 
 export default {
   title: 'Core',

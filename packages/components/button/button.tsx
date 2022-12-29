@@ -3,7 +3,7 @@ import { ButtonProps } from './button-types';
 import styled from 'styled-components';
 import { ConfigContext } from '../../config/context/config-context';
 
-export const Button = forwardRef(function (props: ButtonProps, ref: LegacyRef<HTMLButtonElement>) {
+const Button = forwardRef(function (props: ButtonProps, ref: LegacyRef<HTMLButtonElement>) {
   const context = useContext(ConfigContext);
   console.log(context);
   return <_Button>{props.children}</_Button>;
@@ -21,3 +21,5 @@ const _Button = styled.button`
 `;
 
 Button.displayName = 'Button';
+
+export default Button;
