@@ -49,6 +49,6 @@ module.exports = merge(common, {
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
   },
 });

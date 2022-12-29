@@ -1,7 +1,7 @@
 import React, { forwardRef, LegacyRef, useContext } from 'react';
 import { ButtonProps } from './button-types';
 import styled from 'styled-components';
-import { ConfigContext } from '../../config/context/config-context';
+import { ConfigContext } from '../../../config/context/config-context';
 
 const Button = forwardRef(function (props: ButtonProps, ref: LegacyRef<HTMLButtonElement>) {
   const context = useContext(ConfigContext);

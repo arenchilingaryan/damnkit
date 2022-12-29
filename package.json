@@ -4,8 +4,11 @@
   "publishConfig": {
     "arenchilingaryan:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.3",
-  "main": "./packages/index.ts",
+  "version": "1.0.7",
+  "main": "packages/index.tsx",
+  "repository": {
+    "url": "github.com/arenchilingaryan/damnkit"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "start-storybook -p 6006",
