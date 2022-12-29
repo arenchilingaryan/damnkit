@@ -3,12 +3,21 @@ const path = require('path');
 module.exports = {
   entry: path.resolve(__dirname, 'packages/index.tsx'),
   plugins: [],
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),
+  //   filename: '[name].[hash:8].js',
+  //   sourceMapFilename: '[name].[hash:8].map',
+  //   chunkFilename: '[id].[hash:8].js',
+  //   publicPath: '/',
+  // },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash:8].js',
-    sourceMapFilename: '[name].[hash:8].map',
-    chunkFilename: '[id].[hash:8].js',
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
     publicPath: '/',
+    libraryTarget: 'commonjs2',
+    library: 'ui-kit-damnkit',
+    umdNamedDefine: true,
+    sourceMapFilename: '[name].[hash:8].map',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
