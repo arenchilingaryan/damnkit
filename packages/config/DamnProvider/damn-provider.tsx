@@ -4,7 +4,7 @@ import { mergeConfig } from '../merge-config';
 import defaultConfig from '../base-config';
 import { ConfigContext } from '../context/config-context';
 
-export function DamnProvider({ config: settings, children }: DamnProviderType) {
+export default function DamnProvider({ config: settings, children }: DamnProviderType) {
   return (
     <ConfigContext.Provider value={settings ? mergeConfig(settings) : defaultConfig}>{children}</ConfigContext.Provider>
   );
