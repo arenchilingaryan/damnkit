@@ -6,7 +6,7 @@ import { ConfigContext } from '../../../config/context/config-context';
 const Button = forwardRef(function (props: ButtonProps, ref: LegacyRef<HTMLButtonElement>) {
   const context = useContext(ConfigContext);
   console.log(context);
-  return <_Button>{props.children}</_Button>;
+  return <_Button {...props}>{props.children}</_Button>;
 });
 
 const _Button = styled.button`

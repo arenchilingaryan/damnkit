@@ -11,6 +11,7 @@ export type ButtonOptions = HTMLButtonElement & {
   rightIcon?: React.ReactElement;
   spinner?: React.ReactElement;
   spinnerPlacement?: 'start' | 'end';
+  mix?: string;
 };
 
 export type ButtonProps = PropsWithChildren<ParamHTMLAttributes<ButtonOptions>>;

@@ -1,3 +1,5 @@
+import { Properties } from 'csstype';
+
 type DefaultRandomProperties<T> = { [key: string]: T };
 
 type Metrics = 'em' | 'px' | '%';
@@ -15,4 +17,7 @@ export type Config = {
   colors?: ColorsType;
   space?: SpaceType;
   defaultMetricSystem?: Metrics;
+  mixes?: CssMixesType;
 };
+
+export type CssMixesType = DefaultRandomProperties<Properties<keyof ColorsType | string>>;
