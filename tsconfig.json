@@ -1,18 +1,17 @@
 {
   "types": ["node"],
   "compilerOptions": {
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "module": "esnext",
+    "lib": ["es5"],
+    "module": "commonjs",
     "target": "es5",
-    "allowJs": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "incremental": true,
-    "lib": ["dom", "esnext"],
+
+    "strict": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "outDir": "dist",
+    "declaration": true,
     "jsx": "react-jsx"
   },
   "include": [

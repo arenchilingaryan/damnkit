@@ -4,12 +4,12 @@
   "publishConfig": {
     "arenchilingaryan:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.11",
+  "version": "1.0.17",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "/dist"
-  ]
+  ],
   "repository": {
     "url": "github.com/arenchilingaryan/damnkit"
   },
@@ -19,7 +19,8 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "lint": "eslint --fix .",
     "build-storybook": "build-storybook",
-    "publish": "npm publish"
+    "publish": "npm publish",
+    "tsc:build": "tsc"
   },
   "devDependencies": {
     "@babel/core": "7.20.7",
@@ -37,7 +38,6 @@
     "@storybook/testing-library": "0.0.13",
     "@types/react": "18.0.26",
     "@types/react-dom": "^18.0.10",
-    "@types/react-router-dom": "5.3.2",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "5.47.0",
     "@typescript-eslint/parser": "5.47.0",

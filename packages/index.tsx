@@ -1,3 +1,1 @@
-import Button from './components/button/src';
-
-export { Button };
+export { Button, type ButtonOptions } from './components/button/src';

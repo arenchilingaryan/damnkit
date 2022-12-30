@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory } from '@storybook/react';
 import CoreButton from './button';
 
 export default {
@@ -8,12 +8,11 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Button>;
+};
 
 const Template: ComponentStory<typeof CoreButton> = (args) => <CoreButton {...args} />;
 
 export const Button = Template.bind({});
 Button.args = {
-  primary: true,
   children: 'Button',
 };
