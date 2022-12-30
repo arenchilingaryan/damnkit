@@ -1,7 +1,7 @@
-import { ParamHTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import React from 'react';
 
-export type ButtonOptions = HTMLButtonElement & {
+export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
   isActive?: boolean;
   isDisabled?: boolean;
@@ -14,4 +14,4 @@ export type ButtonOptions = HTMLButtonElement & {
   mix?: string;
 };
 
-export type ButtonProps = PropsWithChildren<ParamHTMLAttributes<ButtonOptions>>;
+export type ButtonProps = PropsWithChildren<ButtonOptions>;

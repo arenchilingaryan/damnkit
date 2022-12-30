@@ -3,10 +3,14 @@ import { ButtonProps } from './button-types';
 import styled from 'styled-components';
 import { ConfigContext } from '../../../config/context/config-context';
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {
   const context = useContext(ConfigContext);
-  console.log(context);
-  return <_Button {...props}>{props.children}</_Button>;
+
+  return (
+    <_Button ref={ref} {...props}>
+      {props.children}
+    </_Button>
+  );
 });
 
 const _Button = styled.button`
