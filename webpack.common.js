@@ -1,23 +1,32 @@
 const path = require('path');
+const webpack = require('webpack');
+const filename = '[name].min.js';
+
+const plugins = [
+  new webpack.SourceMapDevToolPlugin({
+    filename: `${filename}.map`,
+  }),
+];
 
 module.exports = {
-  entry: path.resolve(__dirname, 'packages/index.tsx'),
-  plugins: [],
+  entry: {
+    damnkit: path.resolve(__dirname, 'packages'),
+  },
+  plugins,
   // output: {
-  //   path: path.resolve(__dirname, 'dist'),
-  //   filename: '[name].[hash:8].js',
-  //   sourceMapFilename: '[name].[hash:8].map',
-  //   chunkFilename: '[id].[hash:8].js',
+  //   path: path.join(__dirname, 'dist'),
+  //   filename: '[name].js',
   //   publicPath: '/',
+  //   libraryTarget: 'commonjs2',
+  //   library: 'ui-kit-damnkit',
+  //   umdNamedDefine: true,
+  //   sourceMapFilename: '[name].[hash:8].map',
   // },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
-    publicPath: '/',
-    libraryTarget: 'commonjs2',
-    library: 'ui-kit-damnkit',
-    umdNamedDefine: true,
-    sourceMapFilename: '[name].[hash:8].map',
+    filename,
+    library: 'damnkit',
+    libraryTarget: 'umd',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],

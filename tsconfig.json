@@ -14,5 +14,8 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "jsx": "react-jsx"
-  }
+  },
+  "include": [
+    "packages/**/*"
+  ]
 }
