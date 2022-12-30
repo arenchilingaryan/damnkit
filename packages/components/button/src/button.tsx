@@ -1,9 +1,9 @@
-import React, { forwardRef, LegacyRef, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import { ButtonProps } from './button-types';
 import styled from 'styled-components';
 import { ConfigContext } from '../../../config/context/config-context';
 
-const Button = forwardRef(function (props: ButtonProps, ref: LegacyRef<HTMLButtonElement>) {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const context = useContext(ConfigContext);
   console.log(context);
   return <_Button {...props}>{props.children}</_Button>;

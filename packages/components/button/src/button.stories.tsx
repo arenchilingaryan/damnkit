@@ -1,5 +1,4 @@
 import React from 'react';
-import { ComponentStory } from '@storybook/react';
 import CoreButton from './button';
 
 export default {
@@ -10,9 +9,8 @@ export default {
   },
 };
 
-const Template: ComponentStory<typeof CoreButton> = (args) => <CoreButton {...args} />;
+const Template = () => <CoreButton>123</CoreButton>;
 
 export const Button = Template.bind({});
-Button.args = {
-  children: 'Button',
-};
+
+export const Text = () => <CoreButton>Hello Button</CoreButton>;

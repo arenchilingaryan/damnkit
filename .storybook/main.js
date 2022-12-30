@@ -10,11 +10,6 @@ module.exports = {
   webpackFinal: async (config) => {
     config.module.rules[0].use[0].loader = require.resolve('babel-loader');
 
-    config.module.rules[0].use[0].options.presets = [
-      require.resolve('@babel/preset-react'),
-      require.resolve('@babel/preset-env'),
-    ];
-
     config.resolve.mainFields = ['browser', 'module', 'main'];
     config.resolve.extensions.push('.ts', '.tsx', 'js', 'jsx', 'mdx');
 
