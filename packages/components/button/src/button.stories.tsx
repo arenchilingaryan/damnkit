@@ -9,6 +9,6 @@ export default {
   },
 };
 
-const Template = () => <CoreButton mixName={'primary'}>123</CoreButton>;
+const Template = () => <CoreButton mixName={'primary'}>Button</CoreButton>;
 
 export const Button = Template.bind({});

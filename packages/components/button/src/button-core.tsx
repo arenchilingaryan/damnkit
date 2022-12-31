@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const _Button = styled.button`
-  background: ${(props) => props.theme.primary};
-  color: ${(props) => props.theme.white};
-
+  background: #0052d9;
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
   padding: 8px 24px;
