@@ -32,7 +32,12 @@ export function useStyles() {
     return result;
   }
 
+  function getColorVariant(name: string) {
+    return colors ? colors[name] || '' : '';
+  }
+
   return {
     getMixedStyles,
+    getColorVariant,
   };
 }
