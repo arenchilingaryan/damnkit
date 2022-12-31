@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import React from 'react';
 
 export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -11,7 +11,7 @@ export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
   rightIcon?: React.ReactElement;
   spinner?: React.ReactElement;
   spinnerPlacement?: 'start' | 'end';
-  mix?: string;
+  mixName?: string;
 };
 
 export type ButtonProps = PropsWithChildren<ButtonOptions>;

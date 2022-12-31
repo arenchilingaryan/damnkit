@@ -2,12 +2,15 @@ import React, { forwardRef, useContext } from 'react';
 import { ButtonProps } from './button-types';
 import styled from 'styled-components';
 import { ConfigContext } from '../../../config/context/config-context';
+import { useStyles } from '../../../hooks/useStyles/useStyles';
 
 const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {
   const context = useContext(ConfigContext);
+  const { getMixedStyles } = useStyles();
+  const styles = { ...props.style, ...getMixedStyles(props.mixName) };
 
   return (
-    <_Button ref={ref} {...props}>
+    <_Button style={styles} ref={ref} {...props}>
       {props.children}
     </_Button>
   );
