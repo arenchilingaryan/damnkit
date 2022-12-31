@@ -8,6 +8,10 @@ const colors: ColorsType = {
 
 const space: SpaceType = {
   l: 24,
+  m: {
+    size: 2,
+    metricSystem: 'em',
+  },
 };
 
 const mixes: CssMixesType = {
