@@ -4,7 +4,7 @@ type DefaultRandomProperties<T> = { [key: string]: T };
 
 type Metrics = 'em' | 'px' | '%';
 
-type SpaceObjectProperty = {
+export type SpaceObjectProperty = {
   size: number;
   metricSystem: Metrics;
 };

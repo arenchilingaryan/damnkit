@@ -2,6 +2,13 @@ import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import React from 'react';
 import { SpaceType } from '../../../config/types';
 
+export type Space = {
+  top?: string | keyof SpaceType;
+  right?: string | keyof SpaceType;
+  bottom?: string | keyof SpaceType;
+  left?: string | keyof SpaceType;
+};
+
 export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
   isActive?: boolean;
@@ -14,18 +21,8 @@ export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
   spinnerPlacement?: 'start' | 'end';
   mixName?: string;
   variant?: string;
-  space?: {
-    top?: string | keyof SpaceType;
-    right?: string | keyof SpaceType;
-    bottom?: string | keyof SpaceType;
-    left?: string | keyof SpaceType;
-  };
-  margin?: {
-    top?: string | keyof SpaceType;
-    right?: string | keyof SpaceType;
-    bottom?: string | keyof SpaceType;
-    left?: string | keyof SpaceType;
-  };
+  space?: Space;
+  margin?: Space;
 };
 
 export type ButtonProps = PropsWithChildren<ButtonOptions>;

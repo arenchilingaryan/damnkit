@@ -6,8 +6,14 @@ import { _Button } from './button-core';
 
 const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {
   const context = useContext(ConfigContext);
-  const { getMixedStyles, getColorVariant } = useStyles();
-  const styles = { ...props.style, ...getMixedStyles(props.mixName) };
+  const { getMixedStyles, getColorVariant, getSpaces } = useStyles();
+
+  const styles = {
+    ...props.style,
+    ...getMixedStyles(props.mixName),
+    ...getSpaces('padding', props.space),
+    ...getSpaces('margin', props.margin),
+  };
 
   if (props.variant) {
     styles.backgroundColor = getColorVariant(props.variant);
