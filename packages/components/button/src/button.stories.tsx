@@ -9,6 +9,23 @@ export default {
   },
 };
 
-const Template = () => <CoreButton mixName={'primary'}>Button</CoreButton>;
+const SimpleButton = () => (
+  <CoreButton isLoading mixName={'primary'}>
+    Button
+  </CoreButton>
+);
 
-export const Button = Template.bind({});
+const ButtonGroup = () => (
+  <>
+    <div>
+      <CoreButton isLoading mixName={'primary'}>
+        Button
+      </CoreButton>
+    </div>
+    <div>
+      <CoreButton mixName={'primary'}>Button</CoreButton>
+    </div>
+  </>
+);
+
+export const Button = ButtonGroup.bind({});
