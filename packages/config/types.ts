@@ -9,6 +9,13 @@ export type SpaceObjectProperty = {
   metricSystem: Metrics;
 };
 
+export type BreakpointsTypeSizes = { [key: string]: number };
+
+export type BreakpointsType = {
+  type: 'min-width' | 'max-width';
+  sizes?: BreakpointsTypeSizes;
+};
+
 export type SpaceType = DefaultRandomProperties<SpaceObjectProperty | number>;
 
 export type ColorsType = DefaultRandomProperties<string>;
@@ -20,6 +27,7 @@ export type Config = {
   space?: SpaceType;
   defaultMetricSystem?: Metrics;
   mixes?: CssMixesType;
+  breakpoints?: BreakpointsType;
 };
 
 export type CssMixesType = DefaultRandomProperties<Properties<PropertyValue>>;

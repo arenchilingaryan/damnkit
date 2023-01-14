@@ -9,18 +9,15 @@ export default {
   },
 };
 
-const SimpleButton = () => (
-  <CoreButton isLoading mixName={'primary'}>
-    Button
-  </CoreButton>
-);
-
 const ButtonGroup = () => (
   <>
     <div>
       <CoreButton isLoading mixName={'primary'}>
         Button
       </CoreButton>
+    </div>
+    <div>
+      <CoreButton mixName={'primary'}>Button</CoreButton>
     </div>
     <div>
       <CoreButton mixName={'primary'}>Button</CoreButton>

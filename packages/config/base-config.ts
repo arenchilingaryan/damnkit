@@ -1,4 +1,4 @@
-import { ColorsType, Config, SpaceType, CssMixesType } from './types';
+import { ColorsType, Config, SpaceType, CssMixesType, BreakpointsType } from './types';
 
 const colors: ColorsType = {
   primary: '#366ad5',
@@ -25,6 +25,16 @@ const mixes: CssMixesType = {
   },
 };
 
+const breakpoints: BreakpointsType = {
+  type: 'min-width',
+  sizes: {
+    l: 1440,
+    m: 1024,
+    s: 448,
+    xs: 0,
+  },
+};
+
 const defaultMetricSystem = 'px';
 
 const baseConfig: Config = {
@@ -32,6 +42,7 @@ const baseConfig: Config = {
   colors,
   defaultMetricSystem,
   mixes,
+  breakpoints,
 };
 
 export default baseConfig;

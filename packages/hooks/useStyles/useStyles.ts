@@ -1,11 +1,13 @@
 import { useContext } from 'react';
 import { ConfigContext } from '../../config/context/config-context';
 import { Properties } from 'csstype';
-import { SpaceObjectProperty } from '../../config/types';
+import { BreakpointsType, SpaceObjectProperty, SpaceType } from '../../config/types';
 import { Space } from '../../components/button/src/button-types';
+import { ResponsiveSpaceValue, SpaceConfig } from '../../components/Space/src/Space.types';
+import { css } from 'styled-components';
 
 export function useStyles() {
-  const { space, colors, mixes, defaultMetricSystem } = useContext(ConfigContext);
+  const { space, colors, mixes, defaultMetricSystem, breakpoints } = useContext(ConfigContext);
 
   function getMixedStyles(name: string | undefined) {
     const result = {} as { [key: string]: string };
@@ -68,9 +70,54 @@ export function useStyles() {
     return result;
   }
 
+  function valueAsCss(valueIsVariable: boolean, value: string | number | SpaceObjectProperty) {
+    if (!valueIsVariable) {
+      return value + (defaultMetricSystem || 'px');
+    }
+    if (typeof value === 'object') {
+      return value.size + value.metricSystem;
+    }
+  }
+
+  function getBreakpointsStyles(
+    spaceType: 'margin' | 'padding',
+    type: 'min-width' | 'max-width',
+    config: SpaceConfig,
+    metric: string,
+  ) {
+    const additionalStyles = [];
+
+    for (const i in config) {
+      const element = config[i as keyof SpaceConfig];
+
+      if (typeof element === 'object') {
+        for (const j in element) {
+          const elementByKey = element[j as keyof ResponsiveSpaceValue] as keyof SpaceType;
+          const valueIsVariable = !!space && !!space[elementByKey];
+          const value = valueIsVariable ? space[elementByKey] : elementByKey;
+          const cssValue = valueAsCss(valueIsVariable, value);
+          if (breakpoints) {
+            additionalStyles.push(css`
+              @media (${type}: ${breakpoints[j as keyof BreakpointsType]}) {
+                ${spaceType + '-' + i}: ${cssValue}
+              }
+            `);
+          }
+        }
+      } else {
+        additionalStyles.push(css`
+          ${spaceType + '-' + i}: ${element + metric}
+        `);
+      }
+    }
+
+    return additionalStyles;
+  }
+
   return {
     getMixedStyles,
     getColorVariant,
     getSpaces,
+    getBreakpointsStyles,
   };
 }
