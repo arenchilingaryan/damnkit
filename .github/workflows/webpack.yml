@@ -16,13 +16,13 @@ jobs:
           node-version: 16
       - name: Install
         run: |
-          yarn install
+          npm install
 
       - name: Check
         run: |
-          yarn lint
+          npm run lint
 
       - name: Build
         run: |
-          yarn build
-          yarn build-storybook
+          npm run build
+          npm run build-storybook
