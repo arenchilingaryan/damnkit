@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { ButtonProps } from './button-types';
 import { useStyles } from '../../../hooks/useStyles/useStyles';
 import { _Button, _ButtonContent } from './button-core';
-import Spinner from './spinner';
+import { Spinner } from '../../spinner/src';
 
 const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {
   const { getMixedStyles, getColorVariant, getSpaces } = useStyles();

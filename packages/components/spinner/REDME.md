@@ -1,0 +1,2 @@
+# Spinner
+Simple Spinner Component
