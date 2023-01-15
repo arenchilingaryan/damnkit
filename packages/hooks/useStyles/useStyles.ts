@@ -1,9 +1,14 @@
 import { useContext } from 'react';
 import { ConfigContext } from '../../config/context/config-context';
 import { Properties } from 'csstype';
-import { BreakpointsType, SpaceObjectProperty, SpaceType } from '../../config/types';
+import { SpaceObjectProperty, SpaceType } from '../../config/types';
 import { Space } from '../../components/button/src/button-types';
-import { ResponsiveSpaceValue, SpaceConfig } from '../../components/Space/src/Space.types';
+import {
+  ResponsiveSpaceValue,
+  SpaceConfig,
+  SpaceMediaVariantType,
+  SpacingType,
+} from '../../components/space/src/space-types';
 import { css } from 'styled-components';
 
 export function useStyles() {
@@ -79,35 +84,31 @@ export function useStyles() {
     }
   }
 
-  function getBreakpointsStyles(
-    spaceType: 'margin' | 'padding',
-    type: 'min-width' | 'max-width',
-    config: SpaceConfig,
-    metric: string,
-  ) {
+  function getBreakpointsStyles(spaceType: SpacingType, type: SpaceMediaVariantType, config: SpaceConfig) {
     const additionalStyles = [];
 
     for (const i in config) {
       const element = config[i as keyof SpaceConfig];
-
-      if (typeof element === 'object') {
-        for (const j in element) {
-          const elementByKey = element[j as keyof ResponsiveSpaceValue] as keyof SpaceType;
-          const valueIsVariable = !!space && !!space[elementByKey];
-          const value = valueIsVariable ? space[elementByKey] : elementByKey;
-          const cssValue = valueAsCss(valueIsVariable, value);
-          if (breakpoints) {
-            additionalStyles.push(css`
-              @media (${type}: ${breakpoints[j as keyof BreakpointsType]}) {
-                ${spaceType + '-' + i}: ${cssValue}
-              }
-            `);
+      if (element) {
+        if (typeof element === 'object') {
+          for (const j in element) {
+            const elementByKey = element[j as keyof ResponsiveSpaceValue] as keyof SpaceType;
+            const valueIsVariable = !!space && !!space[elementByKey];
+            const value = valueIsVariable ? space[elementByKey] : elementByKey;
+            const cssValue = valueAsCss(valueIsVariable, value);
+            if (breakpoints && breakpoints.sizes) {
+              additionalStyles.push(css`
+                @media (${type}: ${breakpoints.sizes[j]}px) {
+                  ${spaceType + '-' + i}: ${cssValue}
+                }
+              `);
+            }
           }
+        } else {
+          additionalStyles.push(css`
+            ${spaceType + '-' + i}: ${element + (defaultMetricSystem || 'px') + ';'}
+          `);
         }
-      } else {
-        additionalStyles.push(css`
-          ${spaceType + '-' + i}: ${element + metric}
-        `);
       }
     }
 

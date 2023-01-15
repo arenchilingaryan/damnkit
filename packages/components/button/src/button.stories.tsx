@@ -1,5 +1,6 @@
 import React from 'react';
 import CoreButton from './button';
+import Space from '../../space/src/space';
 
 export default {
   title: 'Core',
@@ -11,17 +12,13 @@ export default {
 
 const ButtonGroup = () => (
   <>
-    <div>
+    <Space bottom={44} top={50} left={{ xs: 20, l: 100 }} spaceType="margin" testId={'123'}>
       <CoreButton isLoading mixName={'primary'}>
         Button
       </CoreButton>
-    </div>
-    <div>
-      <CoreButton mixName={'primary'}>Button</CoreButton>
-    </div>
-    <div>
-      <CoreButton mixName={'primary'}>Button</CoreButton>
-    </div>
+    </Space>
+    <CoreButton mixName={'primary'}>Button</CoreButton>
+    <CoreButton mixName={'primary'}>Button</CoreButton>
   </>
 );
 
