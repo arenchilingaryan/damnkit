@@ -3,12 +3,7 @@ import { ConfigContext } from '../../config/context/config-context';
 import { Properties } from 'csstype';
 import { SpaceObjectProperty, SpaceType } from '../../config/types';
 import { Space } from '../../components/button/src/button-types';
-import {
-  ResponsiveSpaceValue,
-  SpaceConfig,
-  SpaceMediaVariantType,
-  SpacingType,
-} from '../../components/space/src/space-types';
+import { ResponsiveBoxValue, BoxConfig, BoxMediaVariantType, SpacingType } from '../../components/box/src/box-types';
 import { css } from 'styled-components';
 
 export function useStyles() {
@@ -84,15 +79,15 @@ export function useStyles() {
     }
   }
 
-  function getBreakpointsStyles(spaceType: SpacingType, type: SpaceMediaVariantType, config: SpaceConfig) {
+  function getBreakpointsStyles(spaceType: SpacingType, type: BoxMediaVariantType, config: BoxConfig) {
     const additionalStyles = [];
 
     for (const i in config) {
-      const element = config[i as keyof SpaceConfig];
+      const element = config[i as keyof BoxConfig];
       if (element) {
         if (typeof element === 'object') {
           for (const j in element) {
-            const elementByKey = element[j as keyof ResponsiveSpaceValue] as keyof SpaceType;
+            const elementByKey = element[j as keyof ResponsiveBoxValue] as keyof SpaceType;
             const valueIsVariable = !!space && !!space[elementByKey];
             const value = valueIsVariable ? space[elementByKey] : elementByKey;
             const cssValue = valueAsCss(valueIsVariable, value);

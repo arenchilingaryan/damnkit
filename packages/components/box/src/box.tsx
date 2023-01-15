@@ -1,16 +1,16 @@
 import React, { ReactElement } from 'react';
-import { SpaceProps } from './space-types';
+import { BoxProps } from './box-types';
 import styled from 'styled-components';
 import { useStyles } from '../../../hooks/useStyles/useStyles';
 
-const Space = (props: SpaceProps) => {
+const Box = (props: BoxProps) => {
   const {
     className,
     component = 'div',
     children,
     id,
     testId,
-    spaceType = 'padding',
+    boxType = 'padding',
     mediaVariant = 'min-width',
     ...rest
   } = props;
@@ -30,7 +30,7 @@ const Space = (props: SpaceProps) => {
     left: rest.left,
   };
 
-  const breakpointsStyles = getBreakpointsStyles(spaceType, mediaVariant, spaceConfig);
+  const breakpointsStyles = getBreakpointsStyles(boxType, mediaVariant, spaceConfig);
 
   console.log(breakpointsStyles);
 
@@ -45,4 +45,4 @@ const Space = (props: SpaceProps) => {
   return <Component />;
 };
 
-export default Space;
+export default Box;

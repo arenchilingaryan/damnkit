@@ -1,2 +1,0 @@
-# Space
-Simple Space Component
