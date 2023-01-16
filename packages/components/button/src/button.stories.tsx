@@ -12,7 +12,7 @@ export default {
 
 const ButtonGroup = () => (
   <>
-    <Box bottom={44} top={50} left={{ xs: 20, l: 100 }} spaceType="margin" testId={'123'}>
+    <Box mb={44} pt={50} ml={{ xs: 20, l: 100 }} boxType="margin" testId={'123'}>
       <CoreButton isLoading mixName={'primary'}>
         Button
       </CoreButton>

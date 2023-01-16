@@ -10,10 +10,16 @@ export type ResponsiveBoxValue = {
 export type BoxPropertyConfig = BoxValue | ResponsiveBoxValue;
 
 export type BoxConfig = {
-  top?: BoxPropertyConfig;
-  right?: BoxPropertyConfig;
-  bottom?: BoxPropertyConfig;
-  left?: BoxPropertyConfig;
+  p?: BoxPropertyConfig[] | number;
+  pt?: BoxPropertyConfig | number;
+  pr?: BoxPropertyConfig | number;
+  pb?: BoxPropertyConfig | number;
+  pl?: BoxPropertyConfig | number;
+  m?: BoxPropertyConfig[] | number;
+  mt?: BoxPropertyConfig | number;
+  mr?: BoxPropertyConfig | number;
+  mb?: BoxPropertyConfig | number;
+  ml?: BoxPropertyConfig | number;
 };
 
 export type FunctionType = (boxClassName: string) => any;

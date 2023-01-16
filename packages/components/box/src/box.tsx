@@ -15,7 +15,7 @@ const Box = (props: BoxProps) => {
     ...rest
   } = props;
 
-  const { getBreakpointsStyles } = useStyles();
+  const { getBreakpointsStyles, getStylesFromObject } = useStyles();
 
   if (typeof children === 'function') {
     return children(className || '');
@@ -23,22 +23,19 @@ const Box = (props: BoxProps) => {
 
   const element = React.createElement(component, { className: className || '', id, 'data-testid': testId }, children);
 
-  const spaceConfig = {
-    top: rest.top,
-    bottom: rest.bottom,
-    right: rest.right,
-    left: rest.left,
-  };
+  const a = getBreakpointsStyles(
+    boxType,
+    [
+      { m: 35, s: 14 },
+      { s: 1, m: 122 },
+    ],
+    mediaVariant,
+  );
+  console.log(a);
+  // const breakpointsStyles = getBreakpointsStyles(boxType, mediaVariant, );
 
-  const breakpointsStyles = getBreakpointsStyles(boxType, mediaVariant, spaceConfig);
-
-  console.log(breakpointsStyles);
-
-  const renderComponent = (Element: ReactElement) => styled(({ className }) => (
-    <Element.type {...Element.props} className={className} />
-  ))`
-    ${breakpointsStyles}
-  `;
+  const renderComponent = (Element: ReactElement) =>
+    styled(({ className }) => <Element.type {...Element.props} className={className} />)``;
 
   const Component = renderComponent(element);
 

@@ -3,8 +3,16 @@ import { ConfigContext } from '../../config/context/config-context';
 import { Properties } from 'csstype';
 import { SpaceObjectProperty, SpaceType } from '../../config/types';
 import { Space } from '../../components/button/src/button-types';
-import { ResponsiveBoxValue, BoxConfig, BoxMediaVariantType, SpacingType } from '../../components/box/src/box-types';
+import {
+  ResponsiveBoxValue,
+  BoxConfig,
+  BoxMediaVariantType,
+  SpacingType,
+  BoxPropertyConfig,
+} from '../../components/box/src/box-types';
 import { css } from 'styled-components';
+
+const spaceDirections = ['top', 'right', 'bottom', 'left'];
 
 export function useStyles() {
   const { space, colors, mixes, defaultMetricSystem, breakpoints } = useContext(ConfigContext);
@@ -79,32 +87,53 @@ export function useStyles() {
     }
   }
 
-  function getBreakpointsStyles(spaceType: SpacingType, type: BoxMediaVariantType, config: BoxConfig) {
+  const getStylesFromObject = <T>(
+    spaceType: SpacingType,
+    element: T,
+    type: BoxMediaVariantType,
+    direction?: string,
+  ) => {
     const additionalStyles = [];
 
-    for (const i in config) {
-      const element = config[i as keyof BoxConfig];
-      if (element) {
-        if (typeof element === 'object') {
-          for (const j in element) {
-            const elementByKey = element[j as keyof ResponsiveBoxValue] as keyof SpaceType;
-            const valueIsVariable = !!space && !!space[elementByKey];
-            const value = valueIsVariable ? space[elementByKey] : elementByKey;
-            const cssValue = valueAsCss(valueIsVariable, value);
-            if (breakpoints && breakpoints.sizes) {
-              additionalStyles.push(css`
-                @media (${type}: ${breakpoints.sizes[j]}px) {
-                  ${spaceType + '-' + i}: ${cssValue}
-                }
-              `);
-            }
+    for (const j in element) {
+      const elementByKey = element[j as keyof ResponsiveBoxValue] as keyof SpaceType;
+      const valueIsVariable = !!space && !!space[elementByKey];
+      const value = valueIsVariable ? space[elementByKey] : elementByKey;
+      const cssValue = valueAsCss(valueIsVariable, value);
+      if (breakpoints && breakpoints.sizes) {
+        additionalStyles.push(css`
+          @media (${type}: ${breakpoints.sizes[j]}px) {
+            ${spaceType + (direction ? '-' + direction : '')}: ${cssValue}
           }
-        } else {
-          additionalStyles.push(css`
-            ${spaceType + '-' + i}: ${element + (defaultMetricSystem || 'px') + ';'}
-          `);
+        `);
+      }
+    }
+    return additionalStyles;
+  };
+
+  function getBreakpointsStyles(spaceType: SpacingType, element: any, type: BoxMediaVariantType, direction?: string) {
+    const additionalStyles = [];
+
+    if (Array.isArray(element)) {
+      for (let i = 0; i < element.length; i++) {
+        const item = element[i];
+        const direction = spaceDirections[i];
+        if (typeof item === 'object') {
+          const objStylesArr = getStylesFromObject<typeof item>('margin', item, type, direction);
+          additionalStyles.push(...objStylesArr);
         }
       }
+    }
+
+    if (typeof element === 'object' && !Array.isArray(element)) {
+      const objStylesArr = getStylesFromObject<typeof element>('margin', element, type, direction);
+      additionalStyles.push(...objStylesArr);
+    }
+
+    if (typeof element !== 'object' && !Array.isArray(element)) {
+      additionalStyles.push(css`
+        ${spaceType}: ${element + (defaultMetricSystem || 'px') + ';'}
+      `);
     }
 
     return additionalStyles;
@@ -115,5 +144,6 @@ export function useStyles() {
     getColorVariant,
     getSpaces,
     getBreakpointsStyles,
+    getStylesFromObject,
   };
 }
