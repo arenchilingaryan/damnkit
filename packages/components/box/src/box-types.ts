@@ -39,6 +39,5 @@ export type BoxProps = BoxConfig & {
   id?: string;
   testId?: string;
   component?: string | React.ComponentType<BoxComponentProps>;
-  boxType?: SpacingType;
   mediaVariant?: BoxMediaVariantType;
 };

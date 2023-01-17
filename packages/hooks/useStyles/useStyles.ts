@@ -8,7 +8,7 @@ import {
   BoxConfig,
   BoxMediaVariantType,
   SpacingType,
-  BoxPropertyConfig,
+  BoxProps,
 } from '../../components/box/src/box-types';
 import { css } from 'styled-components';
 
@@ -87,12 +87,7 @@ export function useStyles() {
     }
   }
 
-  const getStylesFromObject = <T>(
-    spaceType: SpacingType,
-    element: T,
-    type: BoxMediaVariantType,
-    direction?: string,
-  ) => {
+  const getStylesFromObject = <T>(spaceType: SpacingType, element: T, type: BoxMediaVariantType, direction: string) => {
     const additionalStyles = [];
 
     for (const j in element) {
@@ -103,7 +98,7 @@ export function useStyles() {
       if (breakpoints && breakpoints.sizes) {
         additionalStyles.push(css`
           @media (${type}: ${breakpoints.sizes[j]}px) {
-            ${spaceType + (direction ? '-' + direction : '')}: ${cssValue}
+            ${direction}: ${cssValue}
           }
         `);
       }
@@ -111,7 +106,7 @@ export function useStyles() {
     return additionalStyles;
   };
 
-  function getBreakpointsStyles(spaceType: SpacingType, element: any, type: BoxMediaVariantType, direction?: string) {
+  function getBreakpointsStyles(element: object | string | number, type: BoxMediaVariantType, dir: string) {
     const additionalStyles = [];
 
     if (Array.isArray(element)) {
@@ -126,14 +121,74 @@ export function useStyles() {
     }
 
     if (typeof element === 'object' && !Array.isArray(element)) {
-      const objStylesArr = getStylesFromObject<typeof element>('margin', element, type, direction);
+      const objStylesArr = getStylesFromObject<typeof element>('margin', element, type, dir);
       additionalStyles.push(...objStylesArr);
     }
 
     if (typeof element !== 'object' && !Array.isArray(element)) {
-      additionalStyles.push(css`
-        ${spaceType}: ${element + (defaultMetricSystem || 'px') + ';'}
-      `);
+      if (typeof element === 'string') {
+        const value = space && space[element];
+        if (value) {
+          if (typeof value === 'object') {
+            additionalStyles.push(css`
+              ${dir}: ${value.size + value.metricSystem + ';'}
+            `);
+          } else {
+            additionalStyles.push(css`
+              ${dir}: ${value + (defaultMetricSystem || 'px') + ';'}
+            `);
+          }
+        } else {
+          additionalStyles.push(css`
+            ${dir}: ${element + ';'}
+          `);
+        }
+      } else {
+        additionalStyles.push(css`
+          ${dir}: ${element + (defaultMetricSystem || 'px') + ';'}
+        `);
+      }
+    }
+
+    return additionalStyles;
+  }
+
+  function getDirectionOfBoxProps(dir: string) {
+    const obj: { [key: string]: string } = {
+      t: 'top',
+      r: 'right',
+      b: 'bottom',
+      l: 'left',
+    };
+    if (dir.length === 1) {
+      if (dir === 'p') return 'padding';
+      else return 'margin';
+    }
+
+    const prefix = dir[0] === 'p' ? 'padding' : 'margin';
+    const postfix = obj[dir[1]];
+
+    return prefix + '-' + postfix;
+  }
+
+  function getBoxStyles(props: BoxProps) {
+    const { mb, mr, mt, p, pb, pl, pr, pt, ml, m } = props;
+    const gaps: BoxConfig = { mb, mr, mt, ml, m, p, pb, pl, pr, pt };
+    const mediaVariant = props.mediaVariant || 'min-width';
+
+    const existGapsProps: any = {};
+
+    const additionalStyles = [];
+
+    for (const key in gaps) {
+      const element = gaps[key as keyof BoxConfig];
+      if (element !== undefined) existGapsProps[key] = element;
+    }
+
+    for (const key in existGapsProps) {
+      const direction = getDirectionOfBoxProps(key);
+      const styleArr = getBreakpointsStyles(existGapsProps[key], mediaVariant, direction);
+      additionalStyles.push(...styleArr);
     }
 
     return additionalStyles;
@@ -145,5 +200,6 @@ export function useStyles() {
     getSpaces,
     getBreakpointsStyles,
     getStylesFromObject,
+    getBoxStyles,
   };
 }
