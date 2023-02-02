@@ -1,25 +1,18 @@
 import React from 'react';
 import CoreButton from './button';
-import Box from '../../box/src/box';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { disableStoriesControls } from '../../../utils/disableStoriesControls';
 
 export default {
-  title: 'Core',
+  title: 'Core/Buttons',
   component: CoreButton,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    ...disableStoriesControls('mixName', 'spinner', 'variant', 'margin', 'space', 'rightIcon', 'leftIcon', 'isActive'),
   },
-};
+} as ComponentMeta<typeof CoreButton>;
 
-const ButtonGroup = () => (
-  <>
-    <Box mb={44} pt={50} ml={{ xs: 20, l: 100 }} p={2} testId={'123'}>
-      <CoreButton isLoading mixName={'primary'}>
-        Button
-      </CoreButton>
-    </Box>
-    <CoreButton mixName={'primary'}>Button</CoreButton>
-    <CoreButton mixName={'primary'}>Button</CoreButton>
-  </>
-);
+const Template: ComponentStory<typeof CoreButton> = (args) => <CoreButton {...args}>Button</CoreButton>;
 
-export const Button = ButtonGroup.bind({});
+Template.argTypes = {};
+
+export const Button = Template.bind({});
