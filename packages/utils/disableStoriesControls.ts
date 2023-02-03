@@ -6,14 +6,16 @@ type ReturnDisabledPropType = {
   };
 };
 
-export function disableStoriesControls(...args: string[]) {
-  const obj: ReturnDisabledPropType = {};
-  args.forEach((val) => {
-    obj[val] = {
-      table: {
-        disable: true,
+export function disableStoriesControls(...args: string[]): ReturnDisabledPropType {
+  return args.reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: {
+        table: {
+          disable: true,
+        },
       },
-    };
-  });
-  return obj;
+    }),
+    {},
+  );
 }

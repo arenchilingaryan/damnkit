@@ -13,6 +13,4 @@ export default {
 
 const Template: ComponentStory<typeof CoreButton> = (args) => <CoreButton {...args}>Button</CoreButton>;
 
-Template.argTypes = {};
-
 export const Button = Template.bind({});
