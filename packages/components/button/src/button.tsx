@@ -1,9 +1,9 @@
 import React, { forwardRef, useMemo } from 'react';
 import { ButtonProps } from './button-types';
-import { useStyles } from '../../../hooks/useStyles/useStyles';
+import { useStyles } from 'hooks/useStyles/useStyles';
 import { _Button, _ButtonContent } from './button-core';
-import { Spinner } from '../../spinner/src';
-import ButtonDefaultStyles from '../../../config/baseStyles';
+import { Spinner } from 'components/spinner/src';
+import ButtonDefaultStyles from 'config/baseStyles';
 import { CSSProperties } from 'styled-components';
 
 const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {

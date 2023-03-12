@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { BreakpointsType, SpaceType } from '../../../config/types';
+import { BreakpointsType, SpaceType } from 'config/types';
 
 type BoxValue = keyof SpaceType | number;
 

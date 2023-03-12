@@ -16,5 +16,6 @@
   },
   "include": [
     "packages/**/*"
-  ]
+  ],
+  "extends": "./tsconfig.paths.json"
 }

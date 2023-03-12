@@ -1,7 +1,7 @@
 import React from 'react';
 import CoreButton from './button';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { disableStoriesControls } from '../../../utils/disableStoriesControls';
+import { disableStoriesControls } from 'utils/disableStoriesControls';
 
 export default {
   title: 'Core/Buttons',
