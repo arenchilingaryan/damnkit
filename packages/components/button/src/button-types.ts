@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import React from 'react';
 import { SpaceType } from '../../../config/types';
+import { CSSProperties } from 'styled-components';
 
 export type Space = {
   top?: string | keyof SpaceType;
@@ -11,15 +12,15 @@ export type Space = {
 
 export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
   isLoading?: boolean;
-  isActive?: boolean;
-  isDisabled?: boolean;
+  disabled?: boolean;
+  disableStyles?: string | CSSProperties;
   type?: 'button' | 'reset' | 'submit';
   leftIcon?: React.ReactElement;
   rightIcon?: React.ReactElement;
   spinner?: React.ReactElement;
   mixName?: string;
   variant?: string;
-  space?: Space;
+  padding?: Space;
   margin?: Space;
 };
 

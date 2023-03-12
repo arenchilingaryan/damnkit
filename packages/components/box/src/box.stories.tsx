@@ -18,4 +18,4 @@ const BoxComponent = () => (
   </Box>
 );
 
-export const Space = BoxComponent.bind({});
+export const SpaceBox = BoxComponent.bind({});

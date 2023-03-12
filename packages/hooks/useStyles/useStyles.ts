@@ -10,7 +10,7 @@ import {
   SpacingType,
   BoxProps,
 } from '../../components/box/src/box-types';
-import { css } from 'styled-components';
+import { css, CSSProperties } from 'styled-components';
 
 const spaceDirections = ['top', 'right', 'bottom', 'left'];
 
@@ -194,6 +194,20 @@ export function useStyles() {
     return additionalStyles;
   }
 
+  function getDisabledStyles(disabledStylesProps?: string | CSSProperties) {
+    if (!disabledStylesProps) {
+      if (mixes) {
+        const styles = mixes['disabledStyle'];
+        if (styles) return styles;
+      }
+      return false;
+    }
+    if (typeof disabledStylesProps === 'string') {
+      return getMixedStyles(disabledStylesProps);
+    }
+    return disabledStylesProps;
+  }
+
   return {
     getMixedStyles,
     getColorVariant,
@@ -201,5 +215,6 @@ export function useStyles() {
     getBreakpointsStyles,
     getStylesFromObject,
     getBoxStyles,
+    getDisabledStyles,
   };
 }

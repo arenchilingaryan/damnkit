@@ -7,7 +7,7 @@ export default {
   title: 'Core/Buttons',
   component: CoreButton,
   argTypes: {
-    ...disableStoriesControls('mixName', 'spinner', 'variant', 'margin', 'space', 'rightIcon', 'leftIcon', 'isActive'),
+    ...disableStoriesControls('mixName', 'spinner', 'variant', 'rightIcon', 'leftIcon', 'disableStyles'),
   },
 } as ComponentMeta<typeof CoreButton>;
 

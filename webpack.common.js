@@ -13,15 +13,6 @@ module.exports = {
     damnkit: path.resolve(__dirname, 'packages'),
   },
   plugins,
-  // output: {
-  //   path: path.join(__dirname, 'dist'),
-  //   filename: '[name].js',
-  //   publicPath: '/',
-  //   libraryTarget: 'commonjs2',
-  //   library: 'ui-kit-damnkit',
-  //   umdNamedDefine: true,
-  //   sourceMapFilename: '[name].[hash:8].map',
-  // },
   output: {
     path: path.join(__dirname, 'dist'),
     filename,
