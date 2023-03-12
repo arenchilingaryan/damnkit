@@ -1,0 +1,11 @@
+{
+  "name": "damnkit/damnkit",
+  "version": "1.0.0",
+  "author": "Aren Chilingarian <aren.chilingaryan.dev@gmail.com",
+  "homepage": "https://github.com/arenchilingaryan/damnkit",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "react": "^18.0.0"
+  }
+}

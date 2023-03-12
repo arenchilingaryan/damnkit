@@ -1,0 +1,2 @@
+# Input
+Simple Input Component

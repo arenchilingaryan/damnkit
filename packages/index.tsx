@@ -11,3 +11,4 @@ export {
   type BoxPropertyConfig,
   type BoxProps,
 } from './components/box/src';
+export { Input, type InputPropsType } from './components/input/src';

@@ -1,1 +1,1 @@
-export { default } from './button';
+export { stylesDictionary as default } from './dictionary';
