@@ -77,4 +77,3 @@ function App() {
 
 <h2>Have a nice day, fellow kid!</h3>
 <img src="https://media.giphy.com/media/MfZHme9Xgyn3q/giphy.gif" />
-<img src="https://media.giphy.com/media/MfZHme9Xgyn3q/giphy.gif" />
