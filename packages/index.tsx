@@ -4,4 +4,10 @@ export { type Config, type ColorsType, type SpaceType } from './config/types';
 
 // export components
 export { Button, type ButtonOptions } from './components/button/src';
-export { Box, type BoxConfig, type BoxMediaVariantType, type BoxPropertyConfig, type BoxProps } from './components/box';
+export {
+  Box,
+  type BoxConfig,
+  type BoxMediaVariantType,
+  type BoxPropertyConfig,
+  type BoxProps,
+} from './components/box/src';
