@@ -21,6 +21,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    alias: {
+      utils: path.resolve(__dirname, 'packages/utils'),
+      hooks: path.resolve(__dirname, 'packages/hooks'),
+      config: path.resolve(__dirname, 'packages/config'),
+      components: path.resolve(__dirname, 'packages/components'),
+      types: path.resolve(__dirname, 'packages/types'),
+    },
   },
   externals: {
     react: {
