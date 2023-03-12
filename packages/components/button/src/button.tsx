@@ -1,18 +1,27 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { ButtonProps } from './button-types';
 import { useStyles } from '../../../hooks/useStyles/useStyles';
 import { _Button, _ButtonContent } from './button-core';
 import { Spinner } from '../../spinner/src';
+import ButtonDefaultStyles from '../../../config/baseStyles';
+import { CSSProperties } from 'styled-components';
 
 const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {
-  const { getMixedStyles, getColorVariant, getSpaces } = useStyles();
+  const { getMixedStyles, getColorVariant, getSpaces, getDisabledStyles } = useStyles();
 
-  const styles = {
-    ...props.style,
-    ...getMixedStyles(props.mixName),
-    ...getSpaces('padding', props.space),
-    ...getSpaces('margin', props.margin),
-  };
+  const disabledStyles =
+    props.disabled && (getDisabledStyles(props.disableStyles) || ButtonDefaultStyles.disabledStyles);
+
+  const styles: CSSProperties = useMemo(
+    () => ({
+      ...props.style,
+      ...getMixedStyles(props.mixName),
+      ...getSpaces('padding', props.padding),
+      ...getSpaces('margin', props.margin),
+      ...disabledStyles,
+    }),
+    [],
+  );
 
   if (props.variant) {
     styles.backgroundColor = getColorVariant(props.variant);
