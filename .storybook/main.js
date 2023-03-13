@@ -21,6 +21,7 @@ module.exports = {
       'hooks': path.resolve(__dirname, "../packages/hooks"),
       'config': path.resolve(__dirname, "../packages/config"),
       'components': path.resolve(__dirname, "../packages/components"),
+      'types': path.resolve(__dirname, "../packages/types"),
     };
 
     return config;
