@@ -1,9 +1,8 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { CSSProperties } from 'styled-components';
 import { Space } from '../../../types/component-types';
 
-export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
+export type InputPropsType = InputHTMLAttributes<HTMLInputElement> & {
   isLoading?: boolean;
   disabled?: boolean;
   disableStyles?: string | CSSProperties;
@@ -16,5 +15,3 @@ export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> & {
   padding?: Space;
   margin?: Space;
 };
-
-export type ButtonProps = PropsWithChildren<ButtonOptions>;
