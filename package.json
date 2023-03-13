@@ -4,7 +4,7 @@
   "publishConfig": {
     "arenchilingaryan:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.31",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
