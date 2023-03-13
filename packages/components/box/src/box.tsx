@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { BoxProps } from './box-types';
 import styled from 'styled-components';
-import { useStyles } from '../../../hooks/useStyles/useStyles';
+import { useStyles } from 'hooks/useStyles/useStyles';
 
 const Box = (props: BoxProps) => {
   const { className, component = 'div', children, id, testId, ...rest } = props;

@@ -15,6 +15,14 @@ module.exports = {
 
     config.resolve.modules.push(path.resolve(__dirname, '../packages'));
 
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'utils': path.resolve(__dirname, "../packages/utils"),
+      'hooks': path.resolve(__dirname, "../packages/hooks"),
+      'config': path.resolve(__dirname, "../packages/config"),
+      'components': path.resolve(__dirname, "../packages/components"),
+    };
+
     return config;
   }
 }

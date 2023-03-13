@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 import React from 'react';
-import { SpaceType } from '../../../config/types';
+import { SpaceType } from 'config/types';
 import { CSSProperties } from 'styled-components';
 
 export type Space = {
