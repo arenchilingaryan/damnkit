@@ -1,16 +1,16 @@
 import { useContext } from 'react';
-import { ConfigContext } from '../../config/context/config-context';
+import { ConfigContext } from 'config/context/config-context';
 import { Properties } from 'csstype';
-import { SpaceObjectProperty, SpaceType } from '../../config/types';
-import { Space } from '../../components/button/src/button-types';
+import { SpaceObjectProperty, SpaceType } from 'config/types';
 import {
   ResponsiveBoxValue,
   BoxConfig,
   BoxMediaVariantType,
   SpacingType,
   BoxProps,
-} from '../../components/box/src/box-types';
+} from 'components/box/src/box-types';
 import { css, CSSProperties } from 'styled-components';
+import { Space } from 'types/component-types';
 
 const spaceDirections = ['top', 'right', 'bottom', 'left'];
 
@@ -175,7 +175,7 @@ export function useStyles() {
     const { mb, mr, mt, p, pb, pl, pr, pt, ml, m } = props;
     const gaps: BoxConfig = { mb, mr, mt, ml, m, p, pb, pl, pr, pt };
     const mediaVariant = props.mediaVariant || 'min-width';
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const existGapsProps: any = {};
 
     const additionalStyles = [];
