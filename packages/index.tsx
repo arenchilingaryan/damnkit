@@ -13,3 +13,5 @@ export {
 
 export { Button, type ButtonOptions } from 'components/button';
 export { Input, type InputPropsType } from 'components/input/index';
+export { Transition, type TransitionPropsType } from 'components/transition/index';
+export { OutsideClick } from 'components/outside-click/index';

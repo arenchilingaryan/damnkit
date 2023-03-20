@@ -1,0 +1,2 @@
+# OutsideClick
+Simple OutsideClick Component
