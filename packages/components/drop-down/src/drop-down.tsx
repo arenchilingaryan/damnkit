@@ -13,16 +13,16 @@ const Dropdown: React.FC<DropdownProps> = ({ children, position = 'auto', delay 
   };
 
   return (
-    <_DropdownContainer>
-      <OutsideClick onOutsideClick={handleButtonClick}>
+    <OutsideClick onOutsideClick={() => setIsMenuOpen(false)}>
+      <_DropdownContainer>
         <Button onClick={handleButtonClick}>Dropdown</Button>
         <Transition show={isMenuOpen} delay={Number(delay) || 0}>
           <_DropdownMenu position={position}>
             {children && React.Children.map(children, (child) => <_DropdownItem>{child}</_DropdownItem>)}
           </_DropdownMenu>
         </Transition>
-      </OutsideClick>
-    </_DropdownContainer>
+      </_DropdownContainer>
+    </OutsideClick>
   );
 };
 
