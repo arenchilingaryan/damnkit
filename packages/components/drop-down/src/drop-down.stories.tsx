@@ -3,6 +3,20 @@ import CoreDropdown from './drop-down';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { disableStoriesControls } from 'utils/disableStoriesControls';
 
+type ItemType = {
+  title: string;
+  id: number;
+};
+
+const data: ItemType[] = [
+  { title: 'one', id: 1 },
+  { title: 'two', id: 2 },
+];
+
+const renderChildren = ({ items }: { items: ItemType[] }) => items.map((x) => <div key={x.id}>{x.title}</div>);
+
+const selectItem = (item: ItemType) => console.log(item);
+
 export default {
   title: 'Core/Dropdown',
   component: CoreDropdown,
@@ -13,10 +27,8 @@ export default {
 
 const Template: ComponentStory<typeof CoreDropdown> = () => (
   <div>
-    <CoreDropdown position="auto">
-      <div>Item 1</div>
-      <div>Item 2</div>
-      <div>Item 3</div>
+    <CoreDropdown isCloseOutsideClick onSelect={selectItem} items={data} position="auto">
+      {renderChildren}
     </CoreDropdown>
   </div>
 );
