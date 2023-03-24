@@ -7,7 +7,7 @@ declare const _default: {
         rightIcon?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
     } & {
         children?: React.ReactNode;
-    } & React.RefAttributes<import("../../button/src/button-types").ButtonProps>>;
+    } & React.RefAttributes<HTMLButtonElement>>;
     argTypes: {
         backgroundColor: {
             control: string;

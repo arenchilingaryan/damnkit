@@ -2,6 +2,9 @@
 export { DamnProvider, type DamnProviderPropsType, type DamnProviderType } from 'config/DamnProvider';
 export { type Config, type ColorsType, type SpaceType } from 'config/types';
 
+// export hooks
+export { useOnClickOutside } from 'hooks/useOutsideClick/useOutsideClick';
+
 // export components
 export {
   Box,
@@ -14,4 +17,10 @@ export {
 export { Button, type ButtonOptions } from 'components/button';
 export { Input, type InputPropsType } from 'components/input/index';
 export { Transition, type TransitionPropsType } from 'components/transition/index';
-export { OutsideClick } from 'components/outside-click/index';
+export {
+  type DropdownMenuProps,
+  type ItemRequiredType,
+  type ComponentType,
+  type DropdownProps,
+  DropDown,
+} from 'components/drop-down/index';

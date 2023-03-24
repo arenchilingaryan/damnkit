@@ -6,7 +6,7 @@ declare const _default: ComponentMeta<React.ForwardRefExoticComponent<React.Butt
     rightIcon?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
 } & {
     children?: React.ReactNode;
-} & React.RefAttributes<import("./button-types").ButtonProps>>>;
+} & React.RefAttributes<HTMLButtonElement>>>;
 export default _default;
 export declare const Button: ComponentStory<React.ForwardRefExoticComponent<React.ButtonHTMLAttributes<HTMLButtonElement> & import("../../../types/component-types").RequireComponentProps & {
     type?: "button" | "reset" | "submit" | undefined;
@@ -14,4 +14,4 @@ export declare const Button: ComponentStory<React.ForwardRefExoticComponent<Reac
     rightIcon?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
 } & {
     children?: React.ReactNode;
-} & React.RefAttributes<import("./button-types").ButtonProps>>>;
+} & React.RefAttributes<HTMLButtonElement>>>;

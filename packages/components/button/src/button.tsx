@@ -4,7 +4,7 @@ import { _Button, _ButtonContent } from './button-core';
 import { Spinner } from 'components/spinner/index';
 import { useComponentCommonConfig } from 'hooks/useComponentCommonConfig/useComponentCommonConfig';
 
-const Button = forwardRef<ButtonProps, ButtonProps>((props, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { styles } = useComponentCommonConfig(props, 'button');
 
   return (
