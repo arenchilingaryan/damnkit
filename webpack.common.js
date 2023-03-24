@@ -4,7 +4,7 @@ const filename = '[name].min.js';
 
 const plugins = [
   new webpack.SourceMapDevToolPlugin({
-    filename: `${filename}.map`,
+    filename: `[file].map[query]`,
   }),
 ];
 

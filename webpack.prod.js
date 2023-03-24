@@ -15,6 +15,25 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+          },
+        ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        exclude: /\.module\.css$/,
+      },
+      {
         test: /\.(js|jsx|tsx|ts)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
@@ -27,11 +46,6 @@ module.exports = merge(common, {
             ],
           },
         },
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        sideEffects: true,
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
