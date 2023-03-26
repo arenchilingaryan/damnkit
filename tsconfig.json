@@ -1,10 +1,10 @@
 {
-  "types": ["node"],
+  "types": ["node", "jest"],
   "compilerOptions": {
     "lib": ["es6", "DOM"],
     "module": "commonjs",
     "target": "es5",
-
+    "allowJs": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,7 +12,7 @@
 
     "outDir": "dist",
     "declaration": true,
-    "jsx": "react-jsx",
+    "jsx": "react-jsx"
   },
   "include": [
     "packages/**/*"
