@@ -1,6 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Input } from '../index';
+import { axe } from 'jest-axe';
 
 describe('Input component', () => {
   test('renders without crashing', () => {
@@ -34,5 +35,19 @@ describe('Input component', () => {
     });
 
     expect(handleChange).toHaveBeenCalledTimes(1);
+  });
+
+  test('should render accessible input', async () => {
+    const { container } = render(
+      <Input
+        onChange={(e) => console.log(e)}
+        onClick={console.log}
+        value="123"
+        type="text"
+        placeholder="Type the text"
+      />,
+    );
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
