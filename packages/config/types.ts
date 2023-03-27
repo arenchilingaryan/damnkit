@@ -2,7 +2,7 @@ import { Properties } from 'csstype';
 
 type DefaultRandomProperties<T> = { [key: string]: T };
 
-type Metrics = 'em' | 'px' | '%';
+export type Metrics = 'em' | 'px' | '%';
 
 export type SpaceObjectProperty = {
   size: number;
