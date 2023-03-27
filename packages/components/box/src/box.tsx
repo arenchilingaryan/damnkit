@@ -1,12 +1,10 @@
 import React, { ReactElement } from 'react';
 import { BoxProps } from './box-types';
 import styled from 'styled-components';
-import { useStyles } from 'hooks/useStyles/useStyles';
+import { getBoxStyles } from 'hooks/useStyles/getBoxStyles';
 
 const Box = (props: BoxProps) => {
   const { className, component = 'div', children, id, testId, ...rest } = props;
-
-  const { getBoxStyles } = useStyles();
 
   if (typeof children === 'function') {
     return children(className || '');
