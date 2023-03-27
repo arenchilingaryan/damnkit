@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Button from '../button';
+import { axe } from 'jest-axe';
 
 describe('Button component', () => {
   test('renders button with label', () => {
@@ -23,5 +24,11 @@ describe('Button component', () => {
     userEvent.click(button);
 
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  test('should render accessible button', async () => {
+    const { container } = render(<Button data-testid={'button'}>Text</Button>);
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
   });
 });
