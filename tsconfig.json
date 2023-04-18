@@ -1,8 +1,10 @@
 {
   "types": ["node", "jest"],
   "compilerOptions": {
+    "baseUrl": ".",
     "lib": ["es6", "DOM"],
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
     "allowJs": true,
     "strict": true,
@@ -12,10 +14,28 @@
 
     "outDir": "dist",
     "declaration": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "utils/*": [
+        "./packages/utils/*"
+      ],
+      "config/*": [
+        "./packages/config/*"
+      ],
+      "hooks/*": [
+        "./packages/hooks/*"
+      ],
+      "components/*": [
+        "./packages/components/*"
+      ],
+      "types/*": [
+        "./packages/types/*"
+      ]
+    }
   },
   "include": [
     "packages/**/*"
   ],
-  "extends": "./tsconfig.paths.json"
+  "exclude": ["node_modules", ".vscode"],
+
 }
