@@ -6,9 +6,9 @@ import { useComponentCommonConfig } from 'hooks/useComponentCommonConfig/useComp
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { styles } = useComponentCommonConfig(props, 'button');
-  const { href, target, ...buttonProps } = props;
+  const { ...buttonProps } = props;
 
-  const button = (
+  return (
     <_Button style={styles} ref={ref} {...buttonProps}>
       {props.leftIcon && props.leftIcon}
       <_ButtonContent isHide={!!props.isLoading}>{props.children}</_ButtonContent>
@@ -16,16 +16,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       {props.isLoading && (props.spinner ? props.spinner : <Spinner />)}
     </_Button>
   );
-
-  if (href) {
-    return (
-      <a href={href} target={target || '_self'}>
-        {button}
-      </a>
-    );
-  }
-
-  return button;
 });
 
 Button.displayName = 'Button';

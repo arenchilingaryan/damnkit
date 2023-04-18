@@ -8,10 +8,6 @@ export type ButtonOptions = ButtonHTMLAttributes<HTMLButtonElement> &
     type?: 'button' | 'reset' | 'submit';
     leftIcon?: React.ReactElement;
     rightIcon?: React.ReactElement;
-    href?: string;
   };
 
-export type ButtonProps = PropsWithChildren<ButtonOptions> & {
-  href?: string;
-  target?: '_self' | '_blank';
-};
+export type ButtonProps = PropsWithChildren<ButtonOptions>;
