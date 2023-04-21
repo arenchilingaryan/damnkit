@@ -24,5 +24,5 @@ export {
   type DropdownProps,
   DropDown,
 } from './components/drop-down/index';
-export { DropDownInput, type DragAndDropInputProps } from './components/drag-and-drop-input/index';
+export { DragAndDropInput, type DragAndDropInputProps } from './components/drag-and-drop-input/index';
 export { Slider, type SliderProps } from './components/slider/index';

@@ -1,1 +1,1 @@
-export { DropDownInput, type DragAndDropInputProps } from './src';
+export { DragAndDropInput, type DragAndDropInputProps } from './src';
