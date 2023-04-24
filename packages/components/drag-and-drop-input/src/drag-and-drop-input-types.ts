@@ -8,5 +8,6 @@ export type DragAndDropInputProps = HTMLAttributes<HTMLDivElement> & {
   maxFileSize?: number;
   draggingText?: string | ReactNode;
   title?: string | ReactNode;
-  children?: string | ReactNode | ((dragging: boolean) => ReactNode);
+  children?: string | ReactNode | ((dragging: boolean) => string | ReactNode);
+  showFiles?: boolean;
 };

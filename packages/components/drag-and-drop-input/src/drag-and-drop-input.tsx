@@ -16,6 +16,7 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
   title = 'Drag and drop an image or click to select',
   files,
   children,
+  showFiles = true,
   ...otherProps
 }) => {
   const [dragging, setDragging] = useState(false);
@@ -93,11 +94,13 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
           <_DragAndDropContentHeader>
             There are {files.length} {files.length === 1 ? 'image' : 'images'}
           </_DragAndDropContentHeader>
-          <_DragAndDropCell>
-            {files.map((f, id) => (
-              <DragAndDropImage key={id} src={f} />
-            ))}
-          </_DragAndDropCell>
+          {showFiles && (
+            <_DragAndDropCell>
+              {files.map((f, id) => (
+                <DragAndDropImage key={id} src={f} />
+              ))}
+            </_DragAndDropCell>
+          )}
         </div>
       ) : (
         <_DragAndDropContentHeader>{dragging ? draggingText : title}</_DragAndDropContentHeader>
