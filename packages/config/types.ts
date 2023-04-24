@@ -22,18 +22,12 @@ export type ColorsType = DefaultRandomProperties<string>;
 
 export type PropertyValue = keyof ColorsType | keyof SpaceType | string;
 
-export type Config<
-  C extends ColorsType = ColorsType,
-  S extends SpaceType = SpaceType,
-  M extends Metrics = Metrics,
-  Mixes extends CssMixesType = CssMixesType,
-  B extends BreakpointsType = BreakpointsType,
-> = {
-  colors?: C;
-  space?: S;
-  defaultMetricSystem?: M;
-  mixes?: Mixes;
-  breakpoints?: B;
+export type Config = {
+  colors?: ColorsType;
+  space?: SpaceType;
+  defaultMetricSystem?: Metrics;
+  mixes?: CssMixesType;
+  breakpoints?: BreakpointsType;
 };
 
 export type CssMixesType = DefaultRandomProperties<Properties<PropertyValue>>;
