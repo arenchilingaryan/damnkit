@@ -1,5 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { _DragAndDropInput } from 'components/drag-and-drop-input/src/drag-and-drop-input-core';
+import {
+  _DragAndDropCell,
+  _DragAndDropContentHeader,
+  _DragAndDropInput,
+  DragAndDropImage,
+} from 'components/drag-and-drop-input/src/drag-and-drop-input-core';
 import { DragAndDropInputProps } from 'components/drag-and-drop-input/src/drag-and-drop-input-types';
 
 const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
@@ -7,6 +12,11 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
   className,
   multiple = false,
   maxFileSize = 5 * 1024 * 1024,
+  draggingText = 'Drop it here',
+  title = 'Drag and drop an image or click to select',
+  files,
+  children,
+  ...otherProps
 }) => {
   const [dragging, setDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -65,12 +75,33 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
 
   return (
     <_DragAndDropInput
+      filesLength={files.length}
       className={className}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
+      {...otherProps}
     >
-      <div>{dragging ? 'Drop here' : 'Drag and drop an image or click to select'}</div>
+      {children ? (
+        typeof children === 'function' ? (
+          children(dragging)
+        ) : (
+          children
+        )
+      ) : files.length > 0 ? (
+        <div>
+          <_DragAndDropContentHeader>
+            There are {files.length} {files.length === 1 ? 'image' : 'images'}
+          </_DragAndDropContentHeader>
+          <_DragAndDropCell>
+            {files.map((f, id) => (
+              <DragAndDropImage key={id} src={f} />
+            ))}
+          </_DragAndDropCell>
+        </div>
+      ) : (
+        <_DragAndDropContentHeader>{dragging ? draggingText : title}</_DragAndDropContentHeader>
+      )}
       <input
         data-testid="file-input"
         ref={fileInputRef}
