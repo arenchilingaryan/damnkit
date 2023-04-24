@@ -12,7 +12,7 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
   className,
   multiple = false,
   maxFileSize = 5 * 1024 * 1024,
-  draggingText = 'Drop it here',
+  draggingText = 'Drop here',
   title = 'Drag and drop an image or click to select',
   files,
   children,

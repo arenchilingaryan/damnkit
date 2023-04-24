@@ -9,6 +9,7 @@ describe('DragAndDropInput', () => {
   test('renders without crashing', () => {
     render(
       <DragAndDropInput
+        files={[]}
         onFilesLoaded={() => {
           console.log('test');
         }}
@@ -18,7 +19,7 @@ describe('DragAndDropInput', () => {
 
   test('calls onFilesLoaded with base64 string when file is dropped', async () => {
     const onFilesLoaded = jest.fn();
-    render(<DragAndDropInput onFilesLoaded={onFilesLoaded} />);
+    render(<DragAndDropInput files={[]} onFilesLoaded={onFilesLoaded} />);
 
     fireEvent.dragOver(screen.getByText('Drag and drop an image or click to select'));
     expect(screen.getByText('Drop here')).toBeInTheDocument();
@@ -32,7 +33,7 @@ describe('DragAndDropInput', () => {
 
   test('calls onFilesLoaded with base64 string when file is selected', async () => {
     const onFilesLoaded = jest.fn();
-    render(<DragAndDropInput onFilesLoaded={onFilesLoaded} />);
+    render(<DragAndDropInput files={[]} onFilesLoaded={onFilesLoaded} />);
 
     const input = screen.getByTestId('file-input');
     fireEvent.change(input, { target: { files: [file] } });
@@ -42,7 +43,7 @@ describe('DragAndDropInput', () => {
 
   test('supports multiple file selection', async () => {
     const onFilesLoaded = jest.fn();
-    render(<DragAndDropInput onFilesLoaded={onFilesLoaded} multiple />);
+    render(<DragAndDropInput files={[]} onFilesLoaded={onFilesLoaded} multiple />);
 
     const file2 = new File(['(⌐□_□)'], 'test2.png', { type: 'image/png' });
     const input = screen.getByTestId('file-input');
