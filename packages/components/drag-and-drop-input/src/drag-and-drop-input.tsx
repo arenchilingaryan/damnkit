@@ -6,6 +6,7 @@ import {
   DragAndDropImage,
 } from 'components/drag-and-drop-input/src/drag-and-drop-input-core';
 import { DragAndDropInputProps } from 'components/drag-and-drop-input/src/drag-and-drop-input-types';
+import { useComponentCommonConfig } from 'hooks/useComponentCommonConfig/useComponentCommonConfig';
 
 const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
   onFilesLoaded,
@@ -21,6 +22,7 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
 }) => {
   const [dragging, setDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { styles } = useComponentCommonConfig(otherProps, 'button');
 
   const handleFileInputClick = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
     e.stopPropagation();
@@ -81,6 +83,7 @@ const DragAndDropInput: React.FC<DragAndDropInputProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
+      style={styles}
       {...otherProps}
     >
       {children ? (
