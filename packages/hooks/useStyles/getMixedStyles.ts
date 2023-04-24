@@ -2,7 +2,7 @@ import { Properties } from 'csstype';
 import { ColorsType, CssMixesType, Metrics, SpaceObjectProperty, SpaceType } from 'config/types';
 
 export function getMixedStyles(
-  name: string | undefined,
+  name: keyof CssMixesType,
   space?: SpaceType,
   mixes?: CssMixesType,
   defaultMetricSystem?: Metrics,

@@ -10,15 +10,16 @@ import { getSpaces } from './getSpaces';
 import { getStylesFromObject } from './getStylesFromObject';
 import { getBreakpointsStyles } from './getBreakpointsStyles';
 import { getDisabledStyles } from './getDisabledStyles';
+import { ColorsType, CssMixesType } from 'config/types';
 
 export function useStyles() {
   const { space, colors, mixes, defaultMetricSystem, breakpoints } = useContext(ConfigContext);
 
-  function getMixedStylesWithContext(name: string | undefined) {
+  function getMixedStylesWithContext(name: keyof CssMixesType) {
     return getMixedStyles(name, space, mixes, defaultMetricSystem, colors);
   }
 
-  function getColorVariantWithContext(name: string | undefined) {
+  function getColorVariantWithContext(name: keyof ColorsType) {
     return getColorVariant(name, colors);
   }
 

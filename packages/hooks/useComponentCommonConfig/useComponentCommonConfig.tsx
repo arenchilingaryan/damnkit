@@ -13,7 +13,7 @@ export function useComponentCommonConfig<T extends RequireComponentProps>(props:
   const styles: CSSProperties = useMemo(
     () => ({
       ...props.style,
-      ...getMixedStyles(props.mixName),
+      ...getMixedStyles(props.mixName || ''),
       ...getSpaces('padding', props.padding),
       ...getSpaces('margin', props.margin),
       ...disabledStyles,
@@ -22,7 +22,7 @@ export function useComponentCommonConfig<T extends RequireComponentProps>(props:
   );
 
   if (props.variant) {
-    styles.backgroundColor = getColorVariant(props.variant);
+    styles.backgroundColor = getColorVariant(props.variant || '');
   }
 
   return { styles };

@@ -1,4 +1,4 @@
-import { SpaceType } from 'config/types';
+import { ColorsType, CssMixesType, SpaceType } from 'config/types';
 import { CSSProperties } from 'styled-components';
 import React from 'react';
 
@@ -10,8 +10,8 @@ export type Space = {
 };
 
 export type RequireComponentProps = {
-  mixName?: string;
-  variant?: string;
+  mixName?: keyof CssMixesType;
+  variant?: keyof ColorsType;
   padding?: Space;
   margin?: Space;
   isLoading?: boolean;
